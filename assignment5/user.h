@@ -20,6 +20,21 @@ public:
    * Your custom operators and special member functions will go here!
    */
 
+  friend std::ostream& operator <<(std::ostream& os, const User& user);
+
+  ~User();
+  User(const User& other);
+  User& operator=(const User& other);
+  User(User&& other) = delete;
+  User& operator=(User&& other) = delete;
+
+  User& operator+=(User& other);
+
+  bool operator<(const User& other) const {
+    return this->_name < other._name;
+  }
+
+
 private:
   std::string _name;
   std::string* _friends;
